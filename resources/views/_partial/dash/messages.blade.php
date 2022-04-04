@@ -1,6 +1,4 @@
-<?php
 
-@include('dashboard')
 
 {{--<div class="flex items-center justify-around p-6 bg-white w-64 rounded-xl space-x-2 mt-10 shadow-lg">--}}
 {{--    <div>--}}
@@ -8,9 +6,10 @@
 {{--    </div>--}}
 {{--</div>--}}
 <!-- light mode -->
-@section('content')
+{{--@php(dd($messages))--}}
                         @foreach($messages as $message)
-                            <div class="max-w-2xl mx-auto sm:px-6 sm:w-full lg:px-8 m-5 md:w-full lg:w-1/3">
+
+                            <div class="max-w-2xl  mx-auto sm:px-6 sm:w-full lg:px-8 m-5 md:w-full lg:w-1/3">
                                 <div class="overflow-hidden shadow-md">
                                     <!-- card header -->
                                     <div class="relative px-6 py-4 bg-white border-b border-gray-200 font-bold uppercase">
@@ -20,7 +19,7 @@
                                             <form action="{{asset('message.destroy')}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <input type="hidden" name="id"value="{{$id}}">
+                                                <input type="hidden" name="id"value="{{$message->id}}">
                                                 <button type="submit" >
                                                     <img class="icon  absolute right-3 top-3 hover:scale-110" src="{{asset('image/icon/delete.png')}}" >
                                                 </button>
@@ -41,6 +40,5 @@
                             </div>
                         @endforeach
 
-@endsection
 {{--<!-- divider -->--}}
 {{--<hr class="my-6">--}}

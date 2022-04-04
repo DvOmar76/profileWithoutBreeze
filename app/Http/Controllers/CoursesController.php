@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+
     }
 
     /**
@@ -22,9 +20,15 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function newCourse()
     {
-        //
+
+    }
+    public function create(Request $request)
+    {
+        $show='newCourse';
+        return view('dashboard',compact('show'));
+
     }
 
     /**
@@ -35,7 +39,9 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        $show='courses';
+        return view('dashboard',compact('show'));
     }
 
     /**
@@ -46,7 +52,9 @@ class CoursesController extends Controller
      */
     public function show(Courses $courses)
     {
-        //
+        $courses=Courses::all();
+        $show='courses';
+        return view('dashboard',compact(['courses','show']));
     }
 
     /**

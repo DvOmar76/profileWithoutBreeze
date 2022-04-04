@@ -35,15 +35,15 @@ Route::controller(Dashboard::class)->group(function (){
 });
 
 Route::controller(CoursesController::class)->group(function (){
-
+    Route::get('courses.create','create')->name('courses.create');
+    Route::get('courses.show','show')->name('courses.show');
     Route::post('courses.store',[CoursesController::class,'store'])->name('courses.store');
     Route::post('courses.update',[CoursesController::class,'update'])->name('courses.update');
     Route::delete('courses.destroy',[CoursesController::class,'destroy'])->name('courses.destroy');
 });
 
 Route::controller(MessagesController::class)->group(function(){
-    Route::get('dashboard/message','index')->name('dashboard/message');
-    Route::post('message.store',[MessagesController::class,'store'])->name('message.store');
+    Route::get('message.show','show')->name('message.show');
     Route::delete('message.destroy',[MessagesController::class,'destroy'])->name('message.destroy');
 });
 

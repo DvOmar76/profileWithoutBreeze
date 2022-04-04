@@ -1,8 +1,7 @@
-<?php
-?>
-@include('layouts.app')
+@extends('layouts.app')
 @section('content')
-<div class="min-h-screen flex">
+
+    <div class="min-h-screen flex">
     <div class="py-12 px-10 w-1/4 ">
         <div class="flex space-2 items-center border-b-2 pb-4">
             <div>
@@ -12,10 +11,10 @@
             </div>
             <div class="ml-3">
                 <h1 class="text-3xl font-bold text-indigo-600">Dashboard</h1>
-                {{--                    <p class="text-center text-sm text-indigo-600 mt-1 font-serif">DASHBOARD</p>--}}
+                                    <p class="text-center text-sm text-indigo-600 mt-1 font-serif">DASHBOARD</p>
             </div>
         </div>
-        <div class="flex items-center space-x-4 mt-6 p-2 bg-indigo-600 rounded-md">
+        <div class="flex  items-center space-x-4 mt-6 p-2 bg-indigo-600 rounded-md">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -23,19 +22,19 @@
                 </svg>
             </div>
             <div>
-                <p class="text-lg text-white font-semibold">Dashboard</p>
+                <p class="text-lg  text-white font-semibold">Dashboard</p>
             </div>
         </div>
         <div class="mt-8">
             <ul class="space-y-10">
                 <li>
-                    <a href="{{asset('dashboard/message')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
+                    <a href="{{asset('message.show')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
                         <img class="icon m-1" src="{{asset('dash/chatting.png')}}"  >
                         Messages</a>
 
                 </li>
                 <li>
-                    <a href="{{asset('dashboard/courses')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
+                    <a href="{{asset('courses.show')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
                         <img class="icon m-1" src="{{asset('dash/courses.png')}}"  >
                         Courses</a>
                 </li>
@@ -60,38 +59,30 @@
             <a href="#" class="block font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">Logout</a>
         </div>
     </div>
-    <div class=" bg-gray-50 flex-grow py-12 px-10">
-        <div class="flex justify-between pb-3">
-            <div>
-                <h4 class="text-sm font-bold text-indigo-600">Hi ,</h4>
-                <h1 class="text-4xl font-bold text-indigo-900 mt-">Welcome to Dashboard</h1>
-            </div>
+{{--    <div class=" bg-gray-50 flex-grow py-12 px-10">--}}
+{{--        <div class="flex justify-between pb-3">--}}
+{{--            <div>--}}
+{{--                <h4 class="text-sm font-bold text-indigo-600">Hi ,</h4>--}}
+{{--                <h1 class="text-4xl font-bold text-indigo-900 mt-">Welcome to Dashboard</h1>--}}
+{{--            </div>--}}
 
-        </div>
+{{--        </div>--}}
+{{--    </div>--}}
 
         <div class="flex flex-wrap">
-            @yield('content')
-            {{--              @switch($show)--}}
-            {{--                  @case( 'message')--}}
-            {{--                    @foreach($messages as $message)--}}
-            {{--                        @include('_partial.dash.messages',['message'=>$message])--}}
-            {{--                    @endforeach--}}
-            {{--                  @break--}}
-
-            {{--                  @case('courses')--}}
-            {{--                    @foreach($courses as $course)--}}
-            {{--                        @include('_partial.dash.courses',['course_title'=>$course->course_title,'certificate_url'=>$course->certificate_url,'image_url'=>$course->image_url])--}}
-            {{--                    @endforeach--}}
-            {{--                  @break--}}
-            {{--                @endswitch--}}
-
+            @switch($show)
+                @case( 'messages')
+                    @include('_partial.dash.messages')
+                @break
+                @case('courses')
+                    @include('_partial.dash.courses')
+                @break
+                @case('newCourse')
+                    @include('_partial.dash.newCourse')
+                @break
+            @endswitch
         </div>
-
-
-        <div></div>
-        <div></div>
-    </div>
-    <div></div>
-    <div></div>
 </div>
+
 @endsection
+

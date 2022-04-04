@@ -98,7 +98,7 @@
 
 
 <div class=" flex flex-wrap flex-wrap-reverse   items-center justify-center p-6   rounded rounded-bl-full bg-gray-50 p-10 " id="home">
-    <div class="  w-full image md:w-1/2 sm:w-full  ">
+    <div class=" w-full image md:w-1/2 sm:w-full  ">
         <div class="text-2xl font-medium">hi I'm</div>
         <div class="text-5xl font-bold ">WEB DEVELOPER</div>
         <div class="text-3xl ">Omar Alsulami</div>
@@ -118,7 +118,7 @@
         About Me
     </div>
     <div class="flex flex-wrap   items-center justify-center p-6 ">
-        <div class="  w-full p-5 pt-8 pb-8 m-2 image md:w-1/2 sm:w-full lg:w-1/3    ">
+        <div class=" w-full p-5 pt-8 pb-8 m-2 image md:w-1/2 sm:w-full lg:w-1/3    ">
             <div class="text-2xl font-bold ">Graduated from University of Jeddah</div>
             <div class="text-1xl ">I was awarded the Bachelor of Information Technology From The Faculty Of Computer
                 Science & Engineering With an accumulation grade point average of 4.56 out of 5 [EXCELLENT with -Second
@@ -139,7 +139,7 @@
         My courses
     </div>
     <section class="text-gray-700 body-font center  container">
-        <div class="  ">
+        <div>
             <div class="flex flex-wrap  justify-center text-center   m-20">
                 @foreach($courses as $course)
                     @include('_partial.course',[

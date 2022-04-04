@@ -21,7 +21,8 @@ class Dashboard extends Controller
 //        $courses=Courses::all();
 //        $skills=Skills::all();
 //        $project=Projects::all();
-        return view('dashboard');
+        $show='';
+        return view('dashboard',compact("show"));
     }
 
     public function logout()

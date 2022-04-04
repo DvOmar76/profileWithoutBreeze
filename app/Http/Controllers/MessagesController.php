@@ -12,17 +12,15 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth')->except('store');
+    }
     public function index()
     {
-        $messages=Messages::all();
-        return view('_partial.dash.messages',compact('messages'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function create(Request $request)
     {
 
@@ -52,31 +50,11 @@ class MessagesController extends Controller
      */
     public function show(Messages $messages)
     {
-        //
+        $messages=Messages::all();
+        $show='messages';
+        return view('dashboard',compact(['messages','show']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Messages $messages)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Messages $messages)
-    {
-        //
-    }
 
 
     public function destroy(Request $request)
