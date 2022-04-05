@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CoursesController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
     public function index()
     {
@@ -24,7 +24,7 @@ class CoursesController extends Controller
     {
 
     }
-    public function create(Request $request)
+    public function create()
     {
         $show='newCourse';
         return view('dashboard',compact('show'));
@@ -39,9 +39,9 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $show='courses';
-        return view('dashboard',compact('show'));
+        $courses=new Courses();
+        $courses->create($request->all());
+        return redirect('courses.show');
     }
 
     /**
@@ -50,7 +50,7 @@ class CoursesController extends Controller
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function show(Courses $courses)
+    public function show()
     {
         $courses=Courses::all();
         $show='courses';
@@ -65,19 +65,21 @@ class CoursesController extends Controller
      */
     public function edit(Courses $courses)
     {
-        //
+        $show='editCourse';
+        return view('dashboard',compact('show'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Courses $courses)
+    public function update(Request $request)
     {
-        //
+        $courses=new Courses();
+        $courses->update(request()->all());
+
     }
 
     /**
@@ -86,8 +88,12 @@ class CoursesController extends Controller
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Courses $courses)
+    public function destroy(Request $request)
     {
-        //
+//        dd();
+        $courses=new Courses();
+        $courses->destroy($request->id);
+        return redirect('courses.show');
+
     }
 }

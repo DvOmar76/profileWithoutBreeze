@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class Dashboard extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
     public function index(Request $request){
 //        $username=Auth::user()->name;

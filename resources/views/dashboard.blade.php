@@ -80,6 +80,9 @@
                 @case('newCourse')
                     @include('_partial.dash.newCourse')
                 @break
+                @case('editCourse')
+                    @include('_partial.dash.=')
+                @break
             @endswitch
         </div>
 </div>

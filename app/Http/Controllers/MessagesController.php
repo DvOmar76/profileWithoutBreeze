@@ -13,7 +13,7 @@ class MessagesController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth')->except('store');
+//        $this->middleware('auth')->except('store');
     }
     public function index()
     {
