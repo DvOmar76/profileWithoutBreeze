@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use App\Models\Skills;
 use Illuminate\Http\Request;
 
 class SkillsController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
     public function index()
     {
@@ -36,15 +37,13 @@ class SkillsController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Skills  $skills
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Skills $skills)
+
+    public function show()
     {
-        //
+        $skills=Skills::all();
+//        dd($skills);
+        $show='skills';
+        return view('dashboard',compact(['skills','show']));
     }
 
     /**
@@ -65,9 +64,12 @@ class SkillsController extends Controller
      * @param  \App\Models\Skills  $skills
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skills $skills)
+    public function update(Request $request)
     {
-        //
+//       dd($request->all());
+       $courses=new Skills();
+       $courses->find($request->id)->update($request->all());
+       return redirect('skills.show');
     }
 
     /**
@@ -76,8 +78,10 @@ class SkillsController extends Controller
      * @param  \App\Models\Skills  $skills
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skills $skills)
+    public function destroy(Request $request)
     {
-        //
+        $skills=new Courses();
+        $skills->destroy($request->id);
+        return redirect('skills.show');
     }
 }

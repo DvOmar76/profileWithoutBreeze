@@ -1,10 +1,11 @@
 <div class="flex items-center justify-center h-screen  from-indigo-500 to-indigo-800">
     <div class=" bg-white font-semibold  text-center rounded-3xl border shadow-lg p-12 max-w-xs">
-        <form action="{{asset('courses.store')}}" enctype="multipart/form-data">
-            @method('post')
+        <form action="{{asset('courses.update')}}" enctype="multipart/form-data">
+            @method('patch')
             @csrf
+            <input type="hidden" name="id"value="{{$course->id}}">
             <label for="course_title">title: </label>
-            <input type="text" name="course_title">
+            <input type="text" name="course_title" value="{{$course->course_title}}">
             <label for="certificate_url">certificate: </label>
             <input type="file" name="certificate_url">
             <label for="image_url">image: </label>

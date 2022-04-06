@@ -20,15 +20,11 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function newCourse()
-    {
 
-    }
     public function create()
     {
         $show='newCourse';
         return view('dashboard',compact('show'));
-
     }
 
     /**
@@ -63,10 +59,12 @@ class CoursesController extends Controller
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function edit(Courses $courses)
+    public function edit(Request $request)
     {
+        $courses=new Courses();
+        $course=$courses->find($request->id);
         $show='editCourse';
-        return view('dashboard',compact('show'));
+        return view('dashboard',compact(['show','course']));
     }
 
     /**
@@ -77,8 +75,10 @@ class CoursesController extends Controller
      */
     public function update(Request $request)
     {
+//        dd(request()->all());
         $courses=new Courses();
-        $courses->update(request()->all());
+        $courses->find(request()->id)->update(request()->all());
+        return redirect('courses.show');
 
     }
 

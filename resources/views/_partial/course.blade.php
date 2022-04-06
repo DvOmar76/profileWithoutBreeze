@@ -1,5 +1,3 @@
-<?php
-?>
 <div class="course m-5 p-4 lg:w-1/4   md:w-1/3  sm:w-1/2   rounded-lg justify-items-center justify-center transform transition duration-300 hover:scale-110">
     <a target="_blank" href="{{asset("$certificate_url")}}">
         <div class="p-6">

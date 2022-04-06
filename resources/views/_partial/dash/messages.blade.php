@@ -9,7 +9,7 @@
 {{--@php(dd($messages))--}}
                         @foreach($messages as $message)
 
-                            <div class="max-w-2xl  mx-auto sm:px-6 sm:w-full lg:px-8 m-5 md:w-full lg:w-1/3">
+                            <div class="  max-w-2xl  mx-auto sm:px-6 sm:w-full lg:px-8 m-5 md:w-full lg:w-1/3">
                                 <div class="overflow-hidden shadow-md">
                                     <!-- card header -->
                                     <div class="relative px-6 py-4 bg-white border-b border-gray-200 font-bold uppercase">

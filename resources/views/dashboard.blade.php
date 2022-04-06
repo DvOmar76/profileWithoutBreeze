@@ -39,7 +39,7 @@
                         Courses</a>
                 </li>
                 <li>
-                    <a href="{{asset('dashboard/skills')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
+                    <a href="{{asset('skills.show')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
                         <img class="icon m-1" src="{{asset('dash/skills.png')}}"  >
                         Skills</a>
                 </li>
@@ -69,7 +69,7 @@
 {{--        </div>--}}
 {{--    </div>--}}
 
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap  ">
             @switch($show)
                 @case( 'messages')
                     @include('_partial.dash.messages')
@@ -81,7 +81,11 @@
                     @include('_partial.dash.newCourse')
                 @break
                 @case('editCourse')
-                    @include('_partial.dash.=')
+                    @include('_partial.dash.editCourse')
+                @break
+                @case('skills')
+{{--            @php(dd($skills))--}}
+                    @include('_partial.dash.skills')
                 @break
             @endswitch
         </div>
