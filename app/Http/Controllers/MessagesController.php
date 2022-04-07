@@ -30,11 +30,12 @@ class MessagesController extends Controller
 
     public function store(Request $request)
     {
+//        dd($request->all());
         $request->validate([
             'name'=>'required|string',
             'email'=>'required|string',
             'subject'=>'required|string',
-            'contentMessage'=>'required|string',
+            'message'=>'required|string',
         ]);
         $message=new Messages();
         $message->create($request->all());
@@ -61,6 +62,6 @@ class MessagesController extends Controller
     {
         $messages=new Messages;
         $messages->destroy($request->id);
-        return redirect()->route('dashboard/message');
+        return redirect()->route('message.show');
     }
 }

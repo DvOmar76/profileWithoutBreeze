@@ -157,7 +157,24 @@
         Contact Me
     </div>
     <hr >
+    @if($errors->any())
+        <div class="alert alert-warning">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(isset($_GET['alert']))
 
+        <div class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700" role="alert">
+            <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div>
+                <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+            </div>
+        </div>
+    @endif
     <div class="flex flex-wrap  items-center justify-center sm:p-20   bg-gray-50 ">
         <div class=" p-6   xl:w-1/3 lg:w-1/2  md:w-full sm:w-full  ">
             @include('_partial.contact',['url'=>"/image/icon/email.png",'title'=>'Email','content'=>'dvomaralsulami@gmail.com'])
@@ -166,8 +183,9 @@
         </div>
 
         <div class=" p-5 lg:w-1/2  md:w-full sm:w-full ">
-            <form class="w-full max-w-lg " method="post" action="{{asset('message.create')}}">
+            <form class="w-full max-w-lg " method="post" action="{{asset('message.store')}}">
                 @csrf
+                @method('post')
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <input class="appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-600"  type="text" name="name" placeholder="Your Name">
@@ -183,7 +201,7 @@
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
-                        <textarea class=" form-control  block  w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " rows="3" name="contentMessage" placeholder="Your message"></textarea>
+                        <textarea class=" form-control  block  w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " rows="3" name="message" placeholder="Your message"></textarea>
                     </div>
                 </div>
                 <div class="md:flex md:items-center">

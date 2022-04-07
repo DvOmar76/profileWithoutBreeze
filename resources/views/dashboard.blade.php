@@ -1,7 +1,40 @@
-@extends('layouts.app')
-@section('content')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <div class="min-h-screen flex">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>--}}
+    <style>
+        .cards {
+            border-radius: 50px;
+            background: #f9fafb;
+            box-shadow:  18px 18px 36px #d4d5d5,
+            -18px -18px 36px #ffffff;
+        }
+        .icon{
+            width:20px
+        }
+        .rightButton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div class="min-h-screen flex ">
     <div class="py-12 px-10 w-1/4 ">
         <div class="flex space-2 items-center border-b-2 pb-4">
             <div>
@@ -44,7 +77,7 @@
                         Skills</a>
                 </li>
                 <li>
-                    <a href="{{asset('dashboard/projects')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
+                    <a href="{{asset('projects.show')}}" class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200" hover:text-indigo-600>
                         <img class="icon m-1" src="{{asset('dash/project.png')}}"  >
                         projects</a>
                 </li>
@@ -56,7 +89,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
             </div>
-            <a href="#" class="block font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">Logout</a>
+            <a href="logout" class="block font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">Logout</a>
         </div>
     </div>
 {{--    <div class=" bg-gray-50 flex-grow py-12 px-10">--}}
@@ -69,7 +102,7 @@
 {{--        </div>--}}
 {{--    </div>--}}
 
-        <div class="flex flex-wrap  ">
+        <div class="flex flex-wrap relative bg-indigo-200 ">
             @switch($show)
                 @case( 'messages')
                     @include('_partial.dash.messages')
@@ -84,12 +117,15 @@
                     @include('_partial.dash.editCourse')
                 @break
                 @case('skills')
-{{--            @php(dd($skills))--}}
                     @include('_partial.dash.skills')
+                @break
+                @case('newSkills')
+{{--            @php(dd($skills))--}}
+                    @include('_partial.dash.newSkills')
                 @break
             @endswitch
         </div>
 </div>
 
-@endsection
-
+</body>
+</html>

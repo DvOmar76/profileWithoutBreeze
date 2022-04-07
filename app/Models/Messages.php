@@ -9,11 +9,10 @@ class Messages extends Model
 {
     use HasFactory;
 
-    public $timestamps=false;
     protected $fillable=[
         'name',
         'email',
         'subject',
-        'contentMessage'
+        'message'
     ];
 }

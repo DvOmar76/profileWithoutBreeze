@@ -27,6 +27,11 @@
         .icon{
             width:20px
         }
+        .rightButton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
     </style>
 </head>
 <body class="font-sans antialiased">

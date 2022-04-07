@@ -23,7 +23,9 @@ class SkillsController extends Controller
      */
     public function create()
     {
-        //
+
+        $show='newSkills';
+        return view('dashboard',compact('show'));
     }
 
     /**
@@ -34,7 +36,9 @@ class SkillsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $skills=new Skills();
+        $skills->create($request->all());
+        return redirect('skills.show');
     }
 
 
@@ -80,7 +84,7 @@ class SkillsController extends Controller
      */
     public function destroy(Request $request)
     {
-        $skills=new Courses();
+        $skills=new Skills();
         $skills->destroy($request->id);
         return redirect('skills.show');
     }

@@ -7,38 +7,36 @@
 {{--</div>--}}
 <!-- light mode -->
 {{--@php(dd($messages))--}}
-                        @foreach($messages as $message)
 
-                            <div class="  max-w-2xl  mx-auto sm:px-6 sm:w-full lg:px-8 m-5 md:w-full lg:w-1/3">
-                                <div class="overflow-hidden shadow-md">
-                                    <!-- card header -->
-                                    <div class="relative px-6 py-4 bg-white border-b border-gray-200 font-bold uppercase">
-                                        {{$message->subject}}
-                                        <div class=" absolute bottom-0 right-0 text-gray-300 lowercase" > </div>
-                                        <div class=" leading-relaxed font-bold text-2xl">
-                                            <form action="{{asset('message.destroy')}}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="hidden" name="id"value="{{$message->id}}">
-                                                <button type="submit" >
-                                                    <img class="icon  absolute right-3 top-3 hover:scale-110" src="{{asset('image/icon/delete.png')}}" >
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- card body -->
-                                    <div class="p-6 bg-white border-b border-gray-200">
-                                        <!-- content goes here -->
-                                        {{$message->contentMessage}}
-                                    </div>
-                                    <!-- card footer -->
-                                    <div class=" relative p-6 bg-white border-gray-200 text-right " >
-                                        <div class="absolute top-0 left-2 text-gray-500 font-bold	  uppercase " >{{$message->name}} </div>
-                                        <div class=" absolute bottom-0 left-2 text-gray-400  " >{{$message->email}} </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+<div class="flex flex-wrap">
 
-{{--<!-- divider -->--}}
-{{--<hr class="my-6">--}}
+    @foreach($messages as $message)
+        <div class=" m-5 bg-white rounded-2xl lg:w-1/3  md:w-1/3 sm:w-full shadow-xl  py-12 sm:px-12 lg:px-8 relative ">
+                <div class="container" >
+                    <!-- card header -->
+                    <div class="py-4 bg-white border-b border-gray-200 font-bold uppercase">
+                        {{$message->subject}}
+                    </div>
+                    <!-- card body -->
+                    <div class=" bg-white border-b border-gray-200">
+                        <!-- content goes here -->
+                        {{$message->message}}
+                    </div>
+                    <!-- card footer -->
+                    <div class=" relative bg-white border-gray-200 " >
+                        <p class=" text-gray-500 font-bold uppercase " >{{$message->name}} </p>
+                        <p class=" text-gray-400  " >{{$message->email}} </p>
+                        <p class="text-gray-400  " >{{$message->created_at}}</p>
+                    </div>
+                    <form action="{{asset('message.destroy')}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="id"value="{{$message->id}}">
+                        <button class="absolute bottom-1 right-2  ml-2 w-64 bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full" type="submit">delete</button>
+                    </form>
+
+                </div>
+</div>
+@endforeach
+</div>
+
