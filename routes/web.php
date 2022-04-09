@@ -40,7 +40,7 @@ Route::controller(Dashboard::class)->group(function (){
 Route::controller(CoursesController::class)->group(function (){
     Route::get('courses.create','create')->name('courses.create');
     Route::get('courses.show','show')->name('courses.show');
-    Route::get('courses.store','store')->name('courses.store');
+    Route::post('courses.store','store')->name('courses.store');
     Route::patch('courses.update','update')->name('courses.update');
     Route::patch('courses.edit','edit')->name('courses.edit');
     Route::delete('courses.destroy','destroy')->name('courses.destroy');

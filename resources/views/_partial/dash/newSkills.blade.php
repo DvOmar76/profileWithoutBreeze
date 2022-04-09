@@ -1,7 +1,7 @@
 <div class="container justify-center items-center">
         <div class="absolute left-60 top-60 m-5 bg-white rounded-2xl lg:w-96 md:w-96 sm:w-full shadow-xl px-8 py-12 sm:px-12 lg:px-8  ">
 
-            <form action="{{asset('skills.store')}}" method="post">
+            <form action="{{asset('skills.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="mb-12 space-y-4">

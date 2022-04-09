@@ -39,7 +39,7 @@ class MessagesController extends Controller
         ]);
         $message=new Messages();
         $message->create($request->all());
-        $alert='your message is received';
+        $alert='show';
         return redirect()->route('home',compact('alert'));
     }
 

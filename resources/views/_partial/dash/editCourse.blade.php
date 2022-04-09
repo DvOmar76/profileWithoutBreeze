@@ -1,6 +1,6 @@
 <div class="flex items-center justify-center h-screen  from-indigo-500 to-indigo-800">
     <div class=" bg-white font-semibold  text-center rounded-3xl border shadow-lg p-12 max-w-xs">
-        <form action="{{asset('courses.update')}}" enctype="multipart/form-data">
+        <form action="{{asset('courses.update')}}" method="post" enctype="multipart/form-data">
             @method('patch')
             @csrf
             <input type="hidden" name="id"value="{{$course->id}}">
