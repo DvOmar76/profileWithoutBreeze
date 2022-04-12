@@ -52,6 +52,7 @@ class CoursesController extends Controller
         $pathImage= 'storage/image/course';
         $image_path=$request->file('image_url')->storeAs($pathImage,$nameImage);
         $request->image_url->move($pathImage,$nameImage);
+        $request->certificate_url->move($pathCertificate,$nameCertificate);
 
         $courses=new Courses();
         $courses->create([
