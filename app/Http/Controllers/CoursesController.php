@@ -44,20 +44,21 @@ class CoursesController extends Controller
         ]);
 //        dd($validatedData);
 
-        $nameCertificate = $request->file('certificate_url')->getClientOriginalName().time();
-        $pathCertificate=$request->file('certificate_url')->store('public/courses');
-        $nameImage = $request->file('image_url')->getClientOriginalName().time();
-        $pathImage= $request->file('image_url')->store('public/image/course');
-        $request->certificate_url->move($pathCertificate,$nameCertificate);
+        $nameCertificate =time().$request->file('certificate_url')->getClientOriginalName();
+        $pathCertificate='storage/courses';
+        $certificate_path=$request->file('certificate_url')->storeAs($pathCertificate,$nameCertificate);
+
+        $nameImage = time().$request->file('image_url')->getClientOriginalName();
+        $pathImage= 'storage/image/course';
+        $image_path=$request->file('image_url')->storeAs($pathImage,$nameImage);
         $request->image_url->move($pathImage,$nameImage);
+
         $courses=new Courses();
         $courses->create([
             'course_title'=>$request->course_title,
-            'image_url'=>$pathImage,
-            'certificate_url'=>$pathCertificate
+            'image_url'=>$image_path,
+            'certificate_url' =>$certificate_path
         ]);
-
-
 
         return redirect('courses.show');
     }
