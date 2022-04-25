@@ -12,7 +12,7 @@
             <div class="p-6">
                 <img src="{{asset("$image")}}">
             </div>
-            <form action="{{asset('courses.update')}}" method="post">
+            <form action="{{asset('courses.update')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <input name="id" type="hidden" value="{{$id}}">
@@ -20,7 +20,10 @@
                     <label for="course_title">title: </label>
                     <input class="pt-2 pb-2 pl-3 w-full h-11 bg-slate-100 rounded-lg placeholder:text-slate-600 font-medium pr-20" type="text" name="course_title" value="{{$title}}">
                     <label  for="image_url">image: </label>
-                    <input class="pt-2 pb-2 pl-3  w-full h-11 bg-slate-100 rounded-lg placeholder:text-slate-600 font-medium pr-20" type="file" name="image_url" value="{{$image}}">
+                    <input class="pt-2 pb-2 pl-3  w-full h-11 bg-slate-100 rounded-lg placeholder:text-slate-600 font-medium pr-20" type="file" name="image_url">
+                    <label  for="certificate_url">certificate: </label>
+                    <input class="pt-2 pb-2 pl-3  w-full h-11 bg-slate-100 rounded-lg placeholder:text-slate-600 font-medium pr-20" type="file" name="certificate_url">
+
                 </div>
                 <div class="flex justify-center">
                     <button class="mr-2 w-64 bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2  border rounded-full" type="submit">save</button>

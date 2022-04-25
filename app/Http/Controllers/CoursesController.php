@@ -14,7 +14,19 @@ class CoursesController extends Controller
     {
 
     }
+    public  function upload($request){
+        $nameCertificate =time().$request->file('certificate_url')->getClientOriginalName();
+        $pathCertificate='storage/courses';
+        $certificate_path=$request->file('certificate_url')->storeAs($pathCertificate,$nameCertificate);
 
+        $nameImage = time().$request->file('image_url')->getClientOriginalName();
+        $pathImage= 'storage/image/course';
+        $image_path=$request->file('image_url')->storeAs($pathImage,$nameImage);
+        $request->image_url->move($pathImage,$nameImage);
+        $request->certificate_url->move($pathCertificate,$nameCertificate);
+        return [ 'image_url'=>$image_path,
+            'certificate_url' =>$certificate_path ];
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,23 +54,15 @@ class CoursesController extends Controller
             'image_url' => 'required|mimes:png,jpeg,apng|max:1999',
 
         ]);
-//        dd($validatedData);
+        $info=$this->upload($request);
 
-        $nameCertificate =time().$request->file('certificate_url')->getClientOriginalName();
-        $pathCertificate='storage/courses';
-        $certificate_path=$request->file('certificate_url')->storeAs($pathCertificate,$nameCertificate);
-
-        $nameImage = time().$request->file('image_url')->getClientOriginalName();
-        $pathImage= 'storage/image/course';
-        $image_path=$request->file('image_url')->storeAs($pathImage,$nameImage);
-        $request->image_url->move($pathImage,$nameImage);
-        $request->certificate_url->move($pathCertificate,$nameCertificate);
+//        dd($info['image_url']);
 
         $courses=new Courses();
         $courses->create([
             'course_title'=>$request->course_title,
-            'image_url'=>$image_path,
-            'certificate_url' =>$certificate_path
+            'image_url'=>$info['image_url'],
+            'certificate_url' =>$info['certificate_url']
         ]);
 
         return redirect('courses.show');
@@ -85,6 +89,7 @@ class CoursesController extends Controller
      */
     public function edit(Request $request)
     {
+
         $courses=new Courses();
         $course=$courses->find($request->id);
         $show='editCourse';
@@ -100,8 +105,15 @@ class CoursesController extends Controller
     public function update(Request $request)
     {
 //        dd(request()->all());
+        $info=$this->upload($request);
         $courses=new Courses();
-        $courses->find(request()->id)->update(request()->all());
+        $courses->find(request()->id)->update(
+            [
+                'course_title'=>$request->course_title,
+                'image_url'=>$info['image_url'],
+                'certificate_url' =>$info['certificate_url']
+            ]
+        );
         return redirect('courses.show');
 
     }
