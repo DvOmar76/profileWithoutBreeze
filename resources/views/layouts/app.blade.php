@@ -69,10 +69,6 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
-
-                                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
                                     {{ __('Log Out') }}
                             </form>
                 </div>

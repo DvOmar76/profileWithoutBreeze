@@ -81,9 +81,9 @@
                         @else
                             <li>  <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="{{ route('login') }}">Log in</a></li>
 
-                            @if (Route::has('register'))
-                                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"  href="{{ route('register') }}" >Register</a></li>
-                            @endif
+{{--                            @if (Route::has('register'))--}}
+{{--                                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"  href="{{ route('register') }}" >Register</a></li>--}}
+{{--                            @endif--}}
                         @endauth
                     @endif
                 </ul>

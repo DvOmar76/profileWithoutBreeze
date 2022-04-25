@@ -36,7 +36,7 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen flex ">
     <div class="py-12 px-10 w-1/4 ">
-        <div class="flex space-2 items-center border-b-2 pb-4">
+        <a href="{{asset('/')}}" class="flex space-2 items-center border-b-2 pb-4">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -44,9 +44,9 @@
             </div>
             <div class="ml-3">
                 <h1 class="text-3xl font-bold text-indigo-600">Dashboard</h1>
-                                    <p class="text-center text-sm text-indigo-600 mt-1 font-serif">DASHBOARD</p>
+                 <p class="text-center text-sm text-indigo-600 mt-1 font-serif">Profile</p>
             </div>
-        </div>
+        </a>
         <div class="flex  items-center space-x-4 mt-6 p-2 bg-indigo-600 rounded-md">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
